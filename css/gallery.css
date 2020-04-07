@@ -1,0 +1,165 @@
+#logo {
+    filter: invert(1);
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.nav-bar-item a{
+    color: white;
+}
+
+.nav-bar-item a:before, .nav-bar-item a:after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: white;
+}
+
+.slick-sketch {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sketch p{
+    color: white;
+    float: left;
+    width: 210px;
+    margin-left: 100px;
+    margin-top: 280px;
+}
+
+#sketch-section p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3em;
+}
+
+
+.sketch img {
+    float: left;
+}
+/* .sketch {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 0 20px 0 20px;
+} */
+
+.photo-subsection{
+    margin-top: 400px;
+    margin-bottom: 400px;
+}
+
+#photography-section {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photo-container {
+    overflow: hidden;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#photo1 img {
+    width: 100%;
+    height: auto;
+}
+
+#photo2 img {
+    width: 100%;
+    height: auto;
+}
+
+#photo3 img {
+    width: 100%;
+    height: auto;
+}
+
+#photo4 img {
+    width: 100%;
+    height: auto;
+}
+
+#photo5 img {
+    width: 101%;
+    height: auto;
+    position: relative;
+    right: 2px;
+    bottom: 2px;
+}
+
+#photo6 img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    right: 2px;
+    bottom: 2px;
+}
+
+#photography-section p{
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1em;
+}
+
+
+.slider h3{
+    color: white;
+}
+
+.sf-show {
+    width: 800px;
+}
+
+.sf-show-verti {
+    height: 820px;
+}
+
+.sf-show > img{
+    width: 100%;
+    overflow: hidden;
+}
+
+.sf-show-verti > img {
+    height: 100%;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sf-nav {
+    width: 130px;
+}
+
+.sf-nav > img {
+    width: 100%;
+    overflow: hidden;
+}
+
+.empty {
+    margin-top: 350px;
+    margin-bottom: 350px;
+}
+
+.appear-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.photo-subsection.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+footer p{
+    color: white;
+}

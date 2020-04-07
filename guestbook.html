@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="This is a guestbook where you can leave a message to me. Message will be displayed below">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The WJ Page</title>
+    <link rel="shortcut icon" type="image/png" href="img/wj.png"/>
+    <link rel="stylesheet" href="css/shared.css">
+    <link href="https://fonts.googleapis.com/css?family=Nixie+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    <style>
+        /* Form */
+        #guestbook .main-label {
+            display: block;
+            width: 300px;
+        }
+
+        #guestbook{
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 600px;
+            padding: 40px;
+            font-size: 1.1em;
+            font-family: "plantc", serif;
+        }
+
+        #guestbook .form-row {
+            margin: 10px 0px;
+        }
+
+        #guestbook button {
+            padding: 7px 14px;
+            border-radius: 10px;
+        }
+
+        #guestbook #send-btn {
+            background-color: #59656F;
+            color: #FFF;
+        }
+
+        #guestbook input,
+        #guestbook textarea {
+            font-size: 18px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: .5em;
+            margin-bottom: .5em;
+            width: 600px;
+        }
+
+        #guestbook{
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+        /* Message area */
+        #display-msg > li{
+            border: 1px solid black;
+            border-radius: 12px;
+            margin: 10px;
+            padding: 10px;
+            float: left;
+            animation: appear 1s forwards;
+            opacity: 0;
+            max-width: 413px;
+        }
+        #display-msg > li > div{
+            border: none;
+            margin: 0 9px 0 0;
+            padding: 0;
+        }
+        @keyframes appear {
+            0% {
+                transform: translateY(5px);
+            }
+            80% {
+                opacity: 0.9;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .message-area {
+            width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .name-div {
+            font-weight: bold;
+            margin-right: 9px;
+        }
+
+        .name-div, .msg-div {
+            display: inline;
+        }
+
+        footer {
+            margin-top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="top-intro">
+        <header class="header">
+            <div class="header-wrapper">
+                <div class="logo-wrap">
+                    <a href="index.html">
+                        <img id="logo" src="img/wj.svg" alt="Yunzhe Wang" title="Home Page">
+                    </a>
+                </div>
+                <div class="nav-bar-wrapper">
+                    <ul>
+                        <li id="appear-down-3" class="nav-bar-item appear-down"><a href="summary.html">Summary</a></li>
+                        <li id="appear-down-2" class="nav-bar-item appear-down"><a href="guestbook.html">Guestbook</a></li>
+                        <li id="appear-down-1" class="nav-bar-item appear-down"><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>					
+            </div>				
+        </header>
+        
+    </div>
+    <div id="main">
+        <div id="guestbook">
+            <h1>Guestbook</h1>
+            <form>
+                <div class="form-row">
+                    <label for="name-id" class="main-label">Name</label>
+                    <input type="text" id="name-id" placeholder="How do I address you?" pattern="[^|&]+">
+                </div>
+
+                <div class="form-row">
+                    <label for="email-id" class="main-label">Email</label>
+                    <input type="email" id="email-id" pattern="[^|&]+">
+                </div>
+
+                <div class="form-row">
+                    <label for="msg-id" class="main-label">Message</label>
+                    <textarea id="msg-id" placeholder="Say something?" required></textarea>
+                </div>
+
+
+                <div class="form-row">
+                    <button id="send-btn" type="submit">Done</button>
+                </div>
+            </form>
+        </div> 
+
+        <div class="message-area">
+            <ul id="display-msg">
+            </ul>
+            <div class="clearfloat"></div>
+        </div>
+        
+    
+
+    </div>
+
+    <footer>
+        <p>Designed and developed by Yunzhe Wang 2019</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            ajaxGet("get.php", message_display);
+        };
+
+        document.querySelector("form").onsubmit = function(event) {
+            event.preventDefault();
+
+            let _name = document.querySelector("#name-id").value.trim();
+            let _email = document.querySelector("#email-id").value.trim();
+            let _msg = document.querySelector("#msg-id").value.trim();4
+
+            ajaxPost("get.php", "name="+_name+"&email="+_email+"&msg="+_msg, function(result){console.log(result)});
+            ajaxGet("get_new.php", message_display);
+        }
+
+        function ajaxPost(endpointUrl, postdata, returnFunction) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', endpointUrl, true);
+            // When sending POST requests, need to add some info in the header
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function(){
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    if (xhr.status == 200) {
+                        returnFunction(xhr.responseText);
+                    } else {
+                        alert('AJAX1 Error.');
+                        console.log(xhr.status);
+                    }
+               }
+            }
+            // Send postdata separately
+            xhr.send(postdata);
+        };
+
+        function ajaxGet(endpointUrl, returnFunction){
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', endpointUrl, true);
+            xhr.onreadystatechange = function(){
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    if (xhr.status == 200) {
+                        // When ajax call is complete, call this function, pass a string with the response
+                        returnFunction(xhr.responseText);
+                    } else {
+                        alert('AJAX2 Error.');
+                        console.log(xhr.status);
+                    }
+                }
+            }
+            xhr.send();
+        };
+
+        function message_display(messages) {
+            let resultsList = document.querySelector('#display-msg');
+
+            // while(resultsList.hasChildNodes()) {
+            //     resultsList.removeChild(resultsList.lastChild);
+            // }
+            // Create a <li> for every result and append it to the parent <ol>
+            let items = messages.split("||");
+            // console.log(items);
+            var pausetime = 3000 / items.length;
+
+            var idx = 0;
+            var ani = setInterval(popup, pausetime);
+            function popup() {
+                if (idx == items.length-1) {
+                    clearInterval(ani);
+                }
+                else {
+                    let li = document.createElement("li");
+                    let div_name = document.createElement("div");
+                    div_name.classList.add("name-div");
+                    let div_msg = document.createElement("div");
+                    div_msg.classList.add("msg-div");
+                    let sub_item = items[idx].split("&&");
+                    // console.log(sub_item);
+                    if (sub_item[0].length == 0) {
+                        div_name.innerHTML = "Anon:";
+                    }
+                    else {
+                        div_name.innerHTML = sub_item[0] + ":";
+                    }
+                    div_msg.innerHTML = sub_item[2];
+                    li.appendChild(div_name);
+                    li.appendChild(div_msg);
+                    resultsList.appendChild(li);
+                    idx ++;
+                }
+            }
+        };
+
+
+        var ta = document.getElementById("msg-id");
+        ta.addEventListener(
+            'keypress',
+            function (e) {
+                // Test for the key codes you want to filter out.
+                if (e.keyCode == 38 || e.keyCode == 124 || e.keyCode == 62 || 
+                    e.keyCode == 47 || e.keyCode == 60 || e.keyCode == 92) {
+                    alert('No special characters "& | < > \\ /"');
+                    // Prevent the default event action (adding the
+                    // character to the textarea).
+                    e.preventDefault();
+                }
+            }
+        );
+
+
+
+
+
+    </script>
+</body>

@@ -1,0 +1,403 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    transition: all 1s ease-in;
+    background-color: aliceblue;
+}
+
+@font-face {
+	font-family: "plantc";
+	src: url("../fonts/plantc.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+}
+
+body.change-black {
+    transition: all 1s ease-in;
+    background-color: #151515;
+}
+
+body.change-white {
+    transition: all 1s ease-in;
+    background-color: #fdfdfd;
+}
+
+#arrow1.change-black {
+    transition: none;
+    visibility: hidden;
+}
+
+#arrow1 {
+    transition: all;
+    transition-delay: 1.3s;
+}
+
+.arrow {
+    transition: all 1.3s ease-out;
+}
+
+.arrow.change-black {
+    filter: invert(100%);
+}
+
+#box1.change-black {
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+.box {
+    margin: 0px;
+    tab-size: 4;
+    color: #fff;
+    padding-top: 120px;
+    padding-left: 100px;
+    background-color: #000;
+    height: 500px;
+    position: relative;
+    color: aliceblue;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 200%;
+    text-shadow: black -1px 0px 3px;
+}
+
+
+#box1 {
+    margin-top: 165px;
+    padding-top: 200px;
+    padding-bottom: 100px;
+    clip-path: polygon(0 0, 100% 5vw, 100% calc(100% - 5vw), 0 100%);
+    background-image: url("../img/me.JPG");
+    transition: all 1.5s ease-out;
+}
+
+#box2 {
+    /* clip-path: polygon(0 3vw,100% 0,100% calc(100% - 3vw),0 100%);
+    background-image: url("../img/computer-science.jpg"); */
+    background-color: unset;
+    padding-top: 400px;
+    /* margin-top: 200px; */
+    height: 300px;
+    font-family: "plantc", serif;
+    color: #404040;
+    text-shadow: unset;
+    text-align: center;
+    transition: all 1s ease;
+}
+
+#box2.change-black {
+    color: white;
+    transition: all 1s ease;
+}
+
+#box3 {
+    padding-right: 100px;
+    text-align: right;
+    clip-path: polygon(0 3vw,100% 0,100% 100%,0 calc(100% - 3vw));
+    background-image: url("../img/math.jpg");
+}
+
+#box4 {
+    padding-top: 80px;
+    clip-path: polygon(0 0,100% 3vw,100% 100%,0 calc(100% - 3vw));
+    background-image: url("../img/neuroscience.jpg");;
+}
+
+
+
+
+
+
+#intro {
+    padding-top: 100px;
+}
+.empty {
+    height: auto;
+    margin-top: 20px;
+    /* margin-bottom: 200px; */
+}
+.down {
+    width: 114px;;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 100px; */
+}
+#first-down {
+    margin-top: 360px;
+}
+.down a img{
+    transform: rotate(90deg) scale(0.5);
+    animation: sd 2s infinite;
+}
+@keyframes sd {
+    0% {
+        transform: rotate(90deg) scale(0.5) translate(0, 0);
+    }
+    20% {
+        transform: rotate(90deg) scale(0.5) translate(20px);
+    }
+    40% {
+        transform: rotate(90deg) scale(0.5) translate(0, 0);
+    }
+}
+
+h2 {
+    font-family: 'Nixie One', cursive;
+    font-size: 2.5em;
+    transition: all 1s ease;
+    color: black;
+    margin-left: 30px;
+    opacity: 0;
+    margin-bottom: 30px;
+}
+
+#experience-heading {
+    width: 227px;
+    padding-top: 44px;
+}
+
+.left-show-anim {
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+.left-show-anim .outward-line.left-showup:before, .left-show-anim .outward-line.left-showup:after {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    width: 0px;
+    height: 3px;
+    margin: 5px 0 0;
+    transition: all 0.2s ease-in-out;
+    transition-duration: 0.75s;
+    opacity: 0;
+    background-color: whitesmoke;
+    animation: left-show 0.7s forwards;
+    animation-delay: 0.7s;
+}
+@keyframes left-show {
+    100% {
+        width: 53%;
+        opacity: 1;
+    }
+}
+
+.outward-line.left-showup:before{
+    left: 50%;
+    width: 50%;
+}
+
+.outward-line:after{
+    right: 50%;
+}
+
+/* #examples .example:hover {
+    cursor: pointer;
+  }
+  #examples .example:hover .hover:before, #examples .example:hover .hover:after {
+    width: 100%;
+    opacity: 1;
+  }
+  #examples .example:hover .hover.hover-3:before, #examples .example:hover .hover.hover-3:after, #examples .example:hover .hover.hover-4:before, #examples .example:hover .hover.hover-4:after {
+    width: 50%;
+  } */
+
+h2.left-showup {
+    animation: left-showup 0.7s forwards;
+}
+
+@keyframes left-showup {
+    0% {
+        transform: translateX(-300px);
+    }
+    60% {
+        transform: translateX(20px);
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+h2.change-black {
+    transition: all 1s ease;
+    color: white;
+}
+
+h2.change-white {
+    transition: all 1s ease;
+    color: black;
+}
+
+
+#photos {
+    padding: 20px;
+    width: 1360px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.images{
+    width: 300px;
+    height: 300px;
+    background-color: burlywood;
+    float: left;
+    margin: 20px;
+    box-shadow: 0px 0px 25px 11px rgba(0, 0, 0, 0.28);
+
+    overflow: hidden;
+}
+
+#img1 > img{
+    height: auto;
+    width: 102%;
+    position: relative;
+    bottom: 83px;
+    right:1px;
+}
+#img2 > img{
+    height: 100%;
+    width: auto;
+    position: relative;
+    right: 2px;
+}
+#img3 > img{
+    height: 100%;
+    width: auto;
+    position: relative;
+    right: 3px;
+}
+#img4 > img{
+    height: auto;
+    width: 102%;
+    position: relative;
+    bottom: 54px;
+    right: 2px;
+}
+#img5 > img{
+    height: 102%;
+    width: auto;
+    position: relative;
+    right: 20px;
+    bottom: 2px;
+}
+#img6 > img{
+    height: 102%;
+    width: auto;
+    position: relative;
+    right: 147px;
+    bottom: 2px;
+}
+#img7 > img{
+    height: 100%;
+    width: auto;
+    position: relative;
+}
+#img8 > img{
+    height: 102%;
+    width: auto;
+    position: relative;
+    right: 20px;
+    bottom: 2px;
+}
+
+.appear-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s ease-out;
+}
+.appear-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 1s ease-out;
+}
+.images.appear {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+
+.output {
+    text-align:center;
+    font-family: 'Source Code Pro', monospace;
+    color: black;
+    height: 0px;
+}
+.output h1 {
+    font-size: 3.6em;
+}
+
+/* Cursor Styling */
+
+.cursor::after {
+    content:'';
+    display:inline-block;
+    margin-left:6px;
+    background-color:black;
+    animation-name:blink;
+    animation-duration:0.6s;
+    animation-iteration-count: infinite;
+}
+h1.cursor::after {
+    height: 0.9em;
+    width: 0.5em;
+}
+
+@keyframes blink {
+    0% {
+        opacity:1;
+    }
+    49% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:0;
+    }
+}
+
+@media (max-width: 1400px) {
+    #photos {
+        width: 700px;
+    }
+
+    #empty1 {
+        height: auto;
+        margin-bottom: 200px;
+    }
+
+}
+
+@media (max-width: 700px) {
+    #photos {
+        width: 350px;
+    }
+
+}
+
+#empty2{
+    margin-top: 500px;
+    width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#empty2 svg{
+    transform: scale(1);
+    font-family: Monaco, Consolas, "Lucida Console", monospace;
+}
+
+#empty2 svg path{
+    opacity: 0.3;
+}
+
+
+

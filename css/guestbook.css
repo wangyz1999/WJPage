@@ -1,0 +1,84 @@
+/* Form */
+#guestbook .main-label {
+    display: block;
+    width: 300px;
+}
+
+#guestbook{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    padding: 40px;
+    font-size: 1.1em;
+    font-family: "plantc", serif;
+}
+
+#guestbook .form-row {
+    margin: 10px 0px;
+}
+
+#guestbook button {
+    padding: 7px 14px;
+    border-radius: 10px;
+}
+
+#guestbook #send-btn {
+    background-color: #59656F;
+    color: #FFF;
+}
+
+#guestbook input,
+#guestbook textarea {
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: .5em;
+    margin-bottom: .5em;
+    width: 600px;
+}
+
+#guestbook{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+/* Message area */
+#display-msg > li{
+    border: 1px solid black;
+    border-radius: 12px;
+    margin: 10px;
+    padding: 10px;
+    float: left;
+    animation: appear 1s forwards;
+    opacity: 0;
+    max-width: 413px;
+}
+@keyframes appear {
+    0% {
+        transform: translateY(5px);
+    }
+    80% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.message-area {
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.name-div {
+    font-weight: bold;
+    margin-right: 9px;
+}
+
+.name-div, .msg-div {
+    display: inline;
+}
+
+footer {
+    margin-top: 300px;
+}
